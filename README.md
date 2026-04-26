@@ -1,19 +1,37 @@
 # Plant Growth Stage Detection (YOLOv8)
 
-This repository contains a PyTorch model (`best.pt`) trained to detect and classify various stages of plant development. This can be used for automated crop monitoring, smart greenhouses, or phenotyping research.
+This repository contains a high-accuracy computer vision model (`best.pt`) trained to detect and classify five distinct stages of plant development. This is ideal for smart agriculture, automated greenhouse monitoring, and phenotyping research.
 
-## Classes & Characteristics
-The model is trained on the following 5 stages of plant growth:
+## 📊 Model Performance
+The model was trained for **50 epochs** and shows strong reliability across all stages.
 
-1. **Germination**: The moment the embryo breaks the seed coat (0-2cm).
-2. **Seedling**: Young plants with developing root systems and true leaves (2-10cm).
-3. **Flowering**: The reproductive phase where the plant produces buds/flowers (~2x seedling height).
-4. **Fruiting**: The development of fruit from the pollinated flowers.
-5. **Ripening**: The final stage where fruit reaches maturity and changes color/texture.
+| Class | Precision (P) | Recall (R) | mAP50 |
+| :--- | :--- | :--- | :--- |
+| **All Classes** | **0.893** | **0.867** | **0.910** |
+| Germination | 0.823 | 0.768 | 0.814 |
+| Seeding | 0.927 | 0.844 | 0.910 |
+| Vegetative | 0.932 | 0.969 | 0.989 |
+| Flowering | 0.877 | 0.842 | 0.895 |
+| Fruit & Ripening | 0.903 | 0.914 | 0.942 |
 
-## Model Details
-- **Framework**: PyTorch / YOLOv8
-- **Format**: `.pt` (PyTorch Weights)
-- **Primary Use**: Object detection for agricultural automation.
+## 🌱 Growth Stage Descriptions
+Below are the physical characteristics and average heights used for each class in this model:
 
-## Performance
+1. **Germination (0–1.5 cm)**: The initial breaking of the seed coat and the emergence of the radical or plumule.
+2. **Seeding (1.5–5 cm)**: The early establishment phase after the sprout breaks the soil surface.
+3. **Vegetative (5–30 cm)**: The primary growth stage where the plant develops its main stem and foliage.
+4. **Flowering (20–60 cm)**: The reproductive stage marked by the appearance of flower buds and blossoms.
+5. **Fruit & Ripening (30–100+ cm)**: The combined final stage covering fruit development through to full maturity and harvest readiness.
+
+## 🛠️ Technical Specifications
+- **Framework:** PyTorch / Ultralytics YOLOv8
+- **Format:** `.pt` (PyTorch Weights)
+- **Parameters:** 3,006,623
+- **Inference Speed:** 2.5ms (on Tesla T4)
+- **GFLOPs:** 8.1
+
+## 📦 How to Use
+To run inference with this model, ensure you have `ultralytics` installed:
+
+```bash
+pip install ultralytics
